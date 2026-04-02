@@ -4,7 +4,12 @@ require("dotenv").config();
 const fetch = require("node-fetch");
 
 const app = express();
-app.use(cors());
+// app.use(cors());
+app.use(cors({
+  origin: "*",
+  methods: ["GET", "POST"],
+  allowedHeaders: ["Content-Type"]
+}));
 app.use(express.json());
 const otpRoutes = require("./otpRoutes");
 app.use("/api/auth", otpRoutes);
