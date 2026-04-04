@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LexBot — AI Legal Assistant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     LANDING PAGE (shown to logged-out users)
+════════════════════════════════════════════ -->
+<div id="landing-page" class="landing hidden">
+
+  <!-- Navigation -->
+  <nav class="land-nav">
+    <div class="nav-logo">
+      <!-- SVG Scales of Justice Logo -->
+      <svg class="nav-scales" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="30" cy="8" r="3" fill="#c9a84c"/>
+        <rect x="29" y="10" width="2" height="32" fill="#c9a84c"/>
+        <rect x="10" y="18" width="40" height="2" rx="1" fill="#c9a84c"/>
+        <!-- Left pan -->
+        <path d="M10 20 C6 26 6 30 10 32 L20 32 C24 30 24 26 20 20 Z" fill="none" stroke="#c9a84c" stroke-width="1.5"/>
+        <line x1="10" y1="20" x2="10" y2="30" stroke="#c9a84c" stroke-width="1" stroke-dasharray="2,2"/>
+        <line x1="20" y1="20" x2="20" y2="30" stroke="#c9a84c" stroke-width="1" stroke-dasharray="2,2"/>
+        <!-- Right pan -->
+        <path d="M40 20 C36 26 36 30 40 32 L50 32 C54 30 54 26 50 20 Z" fill="none" stroke="#c9a84c" stroke-width="1.5"/>
+        <line x1="40" y1="20" x2="40" y2="30" stroke="#c9a84c" stroke-width="1" stroke-dasharray="2,2"/>
+        <line x1="50" y1="20" x2="50" y2="30" stroke="#c9a84c" stroke-width="1" stroke-dasharray="2,2"/>
+        <!-- Base -->
+        <rect x="22" y="42" width="16" height="2.5" rx="1.25" fill="#c9a84c"/>
+        <rect x="28" y="42" width="4" height="-10" fill="#c9a84c"/>
+        <line x1="30" y1="42" x2="30" y2="32" stroke="#c9a84c" stroke-width="2"/>
+      </svg>
+      <div class="nav-brand">
+        <span class="nav-brand-name">LexBot</span>
+        <span class="nav-brand-sub">AI Legal Assistant</span>
+      </div>
+    </div>
+    <div class="nav-actions">
+      <button class="nav-btn-outline" onclick="showPage('login')">Sign In</button>
+      <button class="nav-btn-solid" onclick="showPage('register')">Get Started</button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-bg">
+      <div class="hero-pillar p1"></div>
+      <div class="hero-pillar p2"></div>
+      <div class="hero-pillar p3"></div>
+      <div class="hero-pillar p4"></div>
+      <div class="hero-pillar p5"></div>
+      <div class="hero-arch"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">⚖ POWERED BY AI · BUILT FOR INDIA</div>
+      <h1 class="hero-title">
+        Know Your Rights.<br/>
+        <em>Instantly.</em>
+      </h1>
+      <p class="hero-sub">
+        LexBot provides instant, AI-powered legal information on Indian law —
+        IPC, Consumer Rights, Cyber Law, RTI, Family Law and more.
+        Upload documents. Ask questions. Get clarity.
+      </p>
+      <div class="hero-cta">
+        <button class="cta-primary" onclick="showPage('register')">
+          Start Free — No Credit Card
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <button class="cta-secondary" onclick="showPage('login')">Already have an account?</button>
+      </div>
+    </div>
+    <!-- Giant decorative scales -->
+    <div class="hero-scales-deco" aria-hidden="true">
+      <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="100" cy="20" r="8" fill="rgba(201,168,76,0.3)"/>
+        <rect x="97" y="26" width="6" height="110" fill="rgba(201,168,76,0.2)"/>
+        <rect x="20" y="55" width="160" height="6" rx="3" fill="rgba(201,168,76,0.3)"/>
+        <ellipse cx="50" cy="100" rx="32" ry="10" fill="none" stroke="rgba(201,168,76,0.4)" stroke-width="2"/>
+        <path d="M18 58 Q50 100 82 58" fill="none" stroke="rgba(201,168,76,0.3)" stroke-width="1.5"/>
+        <ellipse cx="150" cy="100" rx="32" ry="10" fill="none" stroke="rgba(201,168,76,0.4)" stroke-width="2"/>
+        <path d="M118 58 Q150 100 182 58" fill="none" stroke="rgba(201,168,76,0.3)" stroke-width="1.5"/>
+        <rect x="85" y="136" width="30" height="8" rx="4" fill="rgba(201,168,76,0.3)"/>
+        <rect x="96" y="136" width="8" height="-16" fill="rgba(201,168,76,0.2)"/>
+        <rect x="70" y="172" width="60" height="6" rx="3" fill="rgba(201,168,76,0.25)"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features">
+    <div class="features-inner">
+      <div class="feat-card">
+        <div class="feat-icon">📜</div>
+        <h3>Indian Law Coverage</h3>
+        <p>IPC, CrPC, Consumer Protection, IT Act, RTI, Family & Labour Law — all covered.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">📎</div>
+        <h3>Document Analysis</h3>
+        <p>Upload contracts, notices, or legal images. LexBot reads and explains them instantly.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">💾</div>
+        <h3>Full History</h3>
+        <p>Every conversation saved to your account. Resume any chat, search past advice.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">⚡</div>
+        <h3>Instant Streaming</h3>
+        <p>Answers stream word-by-word — no waiting for a complete response to load.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🇮🇳</div>
+        <h3>English & Hindi</h3>
+        <p>Ask in English or Hindi. LexBot responds in the same language automatically.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🔒</div>
+        <h3>Secure & Private</h3>
+        <p>Your data is encrypted and never shared. Chat history belongs only to you.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="land-footer">
+    <p>⚖ LexBot provides general legal information only — not professional legal advice. Always consult a qualified advocate.</p>
+    <p style="margin-top:8px;color:#4a5568;">© 2025 LexBot · Made for India</p>
+  </footer>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     AUTH MODAL
+════════════════════════════════════════════ -->
+<div id="auth-modal" class="auth-modal hidden">
+  <div class="auth-overlay" onclick="closeAuth()"></div>
+  <div class="auth-box">
+
+    <!-- Logo in modal -->
+    <div class="auth-logo">
+      <svg class="auth-scales-svg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="40" cy="10" r="4" fill="#c9a84c"/>
+        <rect x="38" y="13" width="4" height="42" fill="#c9a84c"/>
+        <rect x="12" y="23" width="56" height="3" rx="1.5" fill="#c9a84c"/>
+        <path d="M12 26 C8 34 8 40 12 43 L28 43 C32 40 32 34 28 26 Z" fill="rgba(201,168,76,0.15)" stroke="#c9a84c" stroke-width="1.5"/>
+        <path d="M52 26 C48 34 48 40 52 43 L68 43 C72 40 72 34 68 26 Z" fill="rgba(201,168,76,0.15)" stroke="#c9a84c" stroke-width="1.5"/>
+        <rect x="30" y="55" width="20" height="3" rx="1.5" fill="#c9a84c"/>
+        <line x1="40" y1="55" x2="40" y2="43" stroke="#c9a84c" stroke-width="2.5"/>
+        <rect x="20" y="68" width="40" height="4" rx="2" fill="#c9a84c"/>
+      </svg>
+      <div class="auth-logo-text">
+        <span class="auth-brand-name">LexBot</span>
+        <span class="auth-brand-tag">AI LEGAL ASSISTANT</span>
+      </div>
+    </div>
+
+    <!-- Register Form -->
+    <div id="form-register" class="auth-form active">
+      <h2 class="auth-form-title">Create Account</h2>
+      <p class="auth-form-sub">Join LexBot to access AI legal assistance.</p>
+
+      <div class="field">
+        <label>Full Name</label>
+        <input id="reg-name" type="text" placeholder="Rajesh Kumar" autocomplete="name"/>
+      </div>
+      <div class="field">
+        <label>Email Address</label>
+        <input id="reg-email" type="email" placeholder="you@example.com" autocomplete="email"/>
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <div class="pw-wrap">
+          <input id="reg-pass" type="password" placeholder="Min. 6 characters" autocomplete="new-password"/>
+          <button class="pw-eye" type="button" onclick="togglePw('reg-pass',this)">👁</button>
+        </div>
+      </div>
+      <div class="field">
+        <label>Confirm Password</label>
+        <div class="pw-wrap">
+          <input id="reg-pass2" type="password" placeholder="Repeat password" autocomplete="new-password"/>
+          <button class="pw-eye" type="button" onclick="togglePw('reg-pass2',this)">👁</button>
+        </div>
+      </div>
+
+      <button id="reg-btn" class="submit-btn" onclick="doRegister()">
+        <span id="reg-btn-txt">Create Account</span>
+        <span class="submit-arrow">→</span>
+      </button>
+
+      <p class="auth-switch">Already have an account? <button onclick="switchForm('login')">Sign in</button></p>
+    </div>
+
+    <!-- Login Form -->
+    <div id="form-login" class="auth-form">
+      <h2 class="auth-form-title">Welcome Back</h2>
+      <p class="auth-form-sub">Sign in to continue your legal consultations.</p>
+
+      <div class="field">
+        <label>Email Address</label>
+        <input id="log-email" type="email" placeholder="you@example.com" autocomplete="email"/>
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <div class="pw-wrap">
+          <input id="log-pass" type="password" placeholder="Your password" autocomplete="current-password"/>
+          <button class="pw-eye" type="button" onclick="togglePw('log-pass',this)">👁</button>
+        </div>
+      </div>
+
+      <div class="forgot-row">
+        <button class="forgot-link" onclick="switchForm('forgot')">Forgot password?</button>
+      </div>
+
+      <button id="log-btn" class="submit-btn" onclick="doLogin()">
+        <span id="log-btn-txt">Sign In</span>
+        <span class="submit-arrow">→</span>
+      </button>
+
+      <p class="auth-switch">No account? <button onclick="switchForm('register')">Create one free</button></p>
+    </div>
+
+    <!-- Forgot Password Form -->
+    <div id="form-forgot" class="auth-form">
+      <h2 class="auth-form-title">Reset Password</h2>
+      <p class="auth-form-sub">Enter your email and we'll send a reset link.</p>
+
+      <div class="field">
+        <label>Email Address</label>
+        <input id="forgot-email" type="email" placeholder="you@example.com"/>
+      </div>
+
+      <button id="forgot-btn" class="submit-btn" onclick="doForgot()">
+        <span id="forgot-btn-txt">Send Reset Link</span>
+        <span class="submit-arrow">→</span>
+      </button>
+
+      <p class="auth-switch"><button onclick="switchForm('login')">← Back to sign in</button></p>
+    </div>
+
+    <!-- Auth message -->
+    <div id="auth-msg" class="auth-msg hidden"></div>
+
+    <!-- Close button -->
+    <button class="auth-close" onclick="closeAuth()">✕</button>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     APP (shown to logged-in users)
+════════════════════════════════════════════ -->
+<div id="app-screen" class="app hidden">
+
+  <!-- SIDEBAR -->
+  <aside id="sidebar" class="sidebar">
+
+    <div class="sb-top">
+      <div class="sb-logo">
+        <svg class="sb-scales" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="5" r="2.5" fill="#c9a84c"/>
+          <rect x="18.75" y="7" width="2.5" height="22" fill="#c9a84c"/>
+          <rect x="6" y="12" width="28" height="2" rx="1" fill="#c9a84c"/>
+          <path d="M6 14 C4 18 4 21 6 22.5 L14 22.5 C16 21 16 18 14 14 Z" fill="rgba(201,168,76,0.2)" stroke="#c9a84c" stroke-width="1"/>
+          <path d="M26 14 C24 18 24 21 26 22.5 L34 22.5 C36 21 36 18 34 14 Z" fill="rgba(201,168,76,0.2)" stroke="#c9a84c" stroke-width="1"/>
+          <rect x="15" y="29" width="10" height="2" rx="1" fill="#c9a84c"/>
+          <line x1="20" y1="29" x2="20" y2="22.5" stroke="#c9a84c" stroke-width="1.5"/>
+          <rect x="10" y="36" width="20" height="2.5" rx="1.25" fill="#c9a84c"/>
+        </svg>
+        <span class="sb-brand">LexBot</span>
+      </div>
+      <button class="sb-new-btn" onclick="startNewChat()" title="New conversation">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        New
+      </button>
+    </div>
+
+    <div class="sb-search-wrap">
+      <input id="session-search" class="sb-search" placeholder="Search history…" oninput="filterSessions(this.value)"/>
+    </div>
+
+    <p class="sb-lbl">History</p>
+    <div id="sessions-list" class="sessions-list">
+      <div class="no-hist">No conversations yet.<br/>Start a new chat!</div>
+    </div>
+
+    <p class="sb-lbl sb-lbl-topics">Quick Topics</p>
+    <nav class="sb-topics">
+      <button class="sb-topic" onclick="sendQuick('Explain IPC Section 420 fraud and punishment')">📜 IPC &amp; Criminal</button>
+      <button class="sb-topic" onclick="sendQuick('Consumer Protection Act 2019 rights India')">🛒 Consumer Rights</button>
+      <button class="sb-topic" onclick="sendQuick('IT Act 2000 cyber crimes India penalties')">💻 Cyber Law</button>
+      <button class="sb-topic" onclick="sendQuick('Divorce process under Hindu Marriage Act')">💍 Family Law</button>
+      <button class="sb-topic" onclick="sendQuick('Employee rights under Indian Labour Law')">⚒ Labour Law</button>
+      <button class="sb-topic" onclick="sendQuick('How to file an RTI application in India')">📂 RTI Act</button>
+      <button class="sb-topic" onclick="sendQuick('Fundamental rights under Indian Constitution')">🇮🇳 Constitution</button>
+      <button class="sb-topic" onclick="sendQuick('Property and inheritance laws in India')">🏠 Property Law</button>
+    </nav>
+
+    <div id="sb-user" class="sb-user">
+      <div id="sb-avatar" class="sb-avatar">?</div>
+      <div class="sb-user-info">
+        <div id="sb-uname" class="sb-uname">—</div>
+        <div id="sb-uemail" class="sb-uemail">—</div>
+      </div>
+      <button class="sb-logout" onclick="doLogout()" title="Sign out">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+      </button>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="app-main">
+
+    <header class="app-header">
+      <button id="menu-btn" class="menu-btn" onclick="toggleSidebar()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <div id="topbar-title" class="app-title">LexBot Legal Assistant</div>
+      <div class="header-right">
+        <div class="lang-switch">
+          <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
+          <button class="lang-btn" data-lang="hi" onclick="setLanguage('hi')">हि</button>
+        </div>
+      </div>
+    </header>
+
+    <div id="chat-window" class="chat-window"></div>
+
+    <!-- File preview strip -->
+    <div id="file-preview" class="file-preview hidden">
+      <div id="file-preview-inner" class="file-preview-inner"></div>
+      <button class="file-clear" onclick="clearFile()" title="Remove file">✕</button>
+    </div>
+
+    <div class="input-dock">
+      <div id="input-shell" class="input-shell">
+        <!-- File attach button -->
+        <button class="attach-btn" onclick="document.getElementById('file-input').click()" title="Attach image or PDF">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+        </button>
+        <input id="file-input" type="file" accept="image/*,.pdf" style="display:none" onchange="handleFileSelect(event)"/>
+
+        <textarea id="chat-input" class="chat-input" rows="1"
+                  placeholder="Ask any legal question…" maxlength="1000"></textarea>
+
+        <div class="input-actions">
+          <button id="voice-btn" class="voice-btn" onclick="toggleVoice()" title="Voice input">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+          </button>
+          <button id="send-btn" class="send-btn" title="Send (Enter)">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+        </div>
+      </div>
+      <p class="dock-disc">⚠ General legal information only — not professional advice · LexBot may make mistakes</p>
+    </div>
+
+  </main>
+</div>
+
+<!-- Sidebar overlay (mobile) -->
+<div id="sb-overlay" class="sb-overlay" onclick="closeSidebar()"></div>
+
+<!-- Global loader -->
+<div id="g-loader" class="g-loader hidden"><div class="g-spin"></div></div>
+
+<script src="js/app.js"></script>
+<script src="js/auth.js"></script>
+</body>
+</html>

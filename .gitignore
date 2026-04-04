@@ -1,2 +1,30 @@
-node_modules
+# Node modules
+node_modules/
+
+# Environment variables (VERY IMPORTANT)
 .env
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor folders
+.vscode/
+.idea/
+
+# Build folders
+dist/
+build/
+
+# Temporary files
+*.tmp
+*.temp
+
+# VS Code temp file (YOU HAD THIS ISSUE)
+server/tempCodeRunnerFile.js
+backend/tempCodeRunnerFile.js
